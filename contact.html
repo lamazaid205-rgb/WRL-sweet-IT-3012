@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - WRL SWEET</title>
+    <link rel="stylesheet" href="../wep/style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="h-content">
+        <div class="brand"><a href="index.html"><img src="../wep/logo.PNG" alt="Logo" class="logo-img"></a><h1 class="brand-name">WRL SWEET</h1></div>
+        <button class="hamburger" id="hamburger">&#9776;</button>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a><a href="courses.html">Courses</a><a href="dashboard.html">Dashboard</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a>
+        </nav>
+        <div class="user-profile"><a href="profile.html"><img src="../wep/girl.png" alt="Profile" class="profile-img"></a></div>
+    </div>
+</header>
+
+<main class="contact-main">
+    <section class="contact-hero">
+        <h2>Contact Us</h2>
+        <p class="contact-intro">
+            We'd love to hear from you! Whether you have a question about our lessons,
+            need help with a recipe, or want to share your baking success story,
+            the WRL Sweets team is here to help.
+        </p>
+    </section>
+
+    <section class="contact-wrapper">
+        <div class="contact-details">
+            <h3>Get in Touch</h3>
+            <ul class="contact-list">
+                <li><span class="contact-label">Location</span><span>Riyadh, Saudi Arabia</span></li>
+                <li><span class="contact-label">Phone</span><span>+966 500 000 000</span></li>
+                <li><span class="contact-label">Email</span><span>support@wrlsweets.com</span></li>
+            </ul>
+            <div class="contact-divider"></div>
+            <div class="follow-box">
+                <p class="follow-title">Follow us</p>
+                <div class="social-list">
+                    <a href="https://www.instagram.com/wrl.sweet" target="_blank"><img src="../wep/instagram.png" alt="Instagram" class="social-icon"></a>
+                    <a href="https://twitter.com/WRL_Sweet" target="_blank"><img src="../wep/x.png" alt="Twitter" class="social-icon"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h3>Send us a message</h3>
+            <div id="nameErr" style="color:red;display:none;margin-bottom:6px;"></div>
+            <div id="emailErr" style="color:red;display:none;margin-bottom:6px;"></div>
+            <div id="msgErr" style="color:red;display:none;margin-bottom:6px;"></div>
+
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="First Last">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="example@email.com">
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5"></textarea>
+
+            <button type="button" id="sendBtn">Send</button>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="f-content">
+        <div class="footer-section left"><p class="about-site">If you like us, tell others. If not, tell us.</p><p class="copyright">&copy; 2026 WRL. All rights reserved.</p></div>
+        <div class="footer-section center"><div class="contact-box"><h4>Contact Us</h4><p class="phone-number">+966 50 000 0000</p></div></div>
+        <div class="footer-section right"><div class="social"><a href="https://www.instagram.com/wrl.sweet" target="_blank"><img src="../wep/instagram.png" alt="Instagram" class="social-icon"></a><a href="https://twitter.com/WRL_Sweet" target="_blank"><img src="../wep/x.png" alt="Twitter" class="social-icon"></a></div></div>
+    </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open');});
+if(localStorage.getItem('wrl-theme')==='dark')document.body.classList.add('theme-dark');
+
+document.getElementById('sendBtn').addEventListener('click', function() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const msg = document.getElementById('message').value.trim();
+
+    // Hide previous errors
+    document.getElementById('nameErr').style.display = 'none';
+    document.getElementById('emailErr').style.display = 'none';
+    document.getElementById('msgErr').style.display = 'none';
+
+    let valid = true;
+
+    // Empty check
+    if (!name) {
+        document.getElementById('nameErr').textContent = 'Name field cannot be empty.';
+        document.getElementById('nameErr').style.display = 'block';
+        valid = false;
+    } else if (/^\d/.test(name)) {
+        // Name cannot start with number
+        document.getElementById('nameErr').textContent = 'Name cannot start with a number.';
+        document.getElementById('nameErr').style.display = 'block';
+        valid = false;
+    } else if (name.split(' ').filter(p => p.length > 0).length < 2) {
+        // Full name required
+        document.getElementById('nameErr').textContent = 'Please enter your full name (First Last).';
+        document.getElementById('nameErr').style.display = 'block';
+        valid = false;
+    }
+
+    if (!email) {
+        document.getElementById('emailErr').textContent = 'Email field cannot be empty.';
+        document.getElementById('emailErr').style.display = 'block';
+        valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('emailErr').textContent = 'Please enter a valid email address.';
+        document.getElementById('emailErr').style.display = 'block';
+        valid = false;
+    }
+
+    if (!msg) {
+        document.getElementById('msgErr').textContent = 'Message field cannot be empty.';
+        document.getElementById('msgErr').style.display = 'block';
+        valid = false;
+    }
+
+    if (valid) {
+        const firstName = name.split(' ')[0];
+        alert('Thank you, ' + firstName + '! Your message has been sent successfully. We will get back to you soon.');
+        // Clear form
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('message').value = '';
+    }
+});
+</script>
+
+</body>
+</html>
