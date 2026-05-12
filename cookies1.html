@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies Lesson - WRL SWEET</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="h-content">
+        <div class="brand">
+            <a href="index.html"><img src="logo.PNG" alt="WRL SWEET Logo" class="logo-img"></a>
+            <h1 class="brand-name">WRL SWEET</h1>
+        </div>
+        <button class="hamburger" id="hamburger">&#9776;</button>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+        <div class="user-profile">
+            <a href="profile.html"><img src="girl.png" alt="Profile" class="profile-img"></a>
+        </div>
+    </div>
+</header>
+
+<main class="lesson-container">
+
+    <div class="lesson-navigation">
+        <a href="courses.html" class="lesson-link">← Previous</a>
+        <a href="cookies2.html" class="lesson-link">Next →</a>
+    </div>
+
+    <h2 class="lesson-title">Cookies</h2>
+
+    <div class="lesson-info">
+        <span>👩‍🍳 Chef: Rahaf</span>
+        <span>⏱ 30 min</span>
+        <span>⭐ Beginner</span>
+    </div>
+
+    <div class="lesson-grid">
+        <div class="lesson-box ingredients-note">
+            <h3>Ingredients</h3>
+            <table class="ingredients-table">
+                <tr><td>2 cups</td><td>Flour</td></tr>
+                <tr><td>1 cup</td><td>Sugar</td></tr>
+                <tr><td>1/2 cup</td><td>Butter</td></tr>
+                <tr><td>1</td><td>Egg</td></tr>
+                <tr><td>1 cup</td><td>Chocolate chips</td></tr>
+            </table>
+        </div>
+        <div class="lesson-box">
+            <h3>About the Recipe</h3>
+            <p>Learn how to bake soft and delicious cookies with simple steps.</p>
+            <p>Cookies are quick to make and perfect for beginners.</p>
+        </div>
+    </div>
+
+    <div class="tips-box">
+        <h3>Tips</h3>
+        <p>• Do not overmix the dough.</p>
+        <p>• Leave space between cookies while baking.</p>
+        <p>• Use room-temperature butter for best results.</p>
+        <p>• Do not overbake — remove when edges are golden.</p>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="f-content">
+        <div class="footer-section left">
+            <p class="about-site">If you like us, tell others. If not, tell us.</p>
+            <p class="copyright">&copy; 2026 WRL. All rights reserved.</p>
+        </div>
+        <div class="footer-section center">
+            <div class="contact-box">
+                <h4>Contact Us</h4>
+                <p class="phone-number">+966 50 000 0000</p>
+            </div>
+        </div>
+        <div class="footer-section right">
+            <div class="social">
+                <a href="https://www.instagram.com/wrl.sweet" target="_blank">
+                    <img src="instagram.png" alt="Instagram" class="social-icon">
+                </a>
+                <a href="https://twitter.com/WRL_Sweet" target="_blank">
+                    <img src="x.png" alt="Twitter" class="social-icon">
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+});
+if (localStorage.getItem('wrl-theme') === 'dark') document.body.classList.add('theme-dark');
+
+// 3-second alert with lesson goal
+setTimeout(function() {
+    alert("🍪 Cookies Lesson Goal:\nIn this lesson, you will learn how to bake soft, delicious cookies from scratch.\n\nDon't forget to take the quiz after finishing the lesson! 📝");
+}, 3000);
+</script>
+
+</body>
+</html>

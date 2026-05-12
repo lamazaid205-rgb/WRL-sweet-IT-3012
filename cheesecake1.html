@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheesecake Lesson - WRL SWEET</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+    <div class="h-content">
+        <div class="brand"><a href="index.html"><img src="logo.PNG" alt="Logo" class="logo-img"></a><h1 class="brand-name">WRL SWEET</h1></div>
+        <button class="hamburger" id="hamburger">&#9776;</button>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a><a href="courses.html">Courses</a><a href="dashboard.html">Dashboard</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a>
+        </nav>
+        <div class="user-profile"><a href="profile.html"><img src="girl.png" alt="Profile" class="profile-img"></a></div>
+    </div>
+</header>
+<main class="lesson-container">
+    <div class="lesson-navigation">
+        <a href="courses.html" class="lesson-link">← Previous</a>
+        <a href="cheesecake2.html" class="lesson-link">Next →</a>
+    </div>
+    <h2 class="lesson-title">Cheesecake</h2>
+    <div class="lesson-info"><span>👩‍🍳 Chef: Wjood</span><span>⏱ 50 min</span><span>⭐ Intermediate</span></div>
+    <div class="lesson-grid">
+        <div class="lesson-box ingredients-note">
+            <h3>Ingredients</h3>
+            <table class="ingredients-table">
+                <tr><td>200 g</td><td>Biscuits</td></tr>
+                <tr><td>1/2 cup</td><td>Melted butter</td></tr>
+                <tr><td>2 cups</td><td>Cream cheese</td></tr>
+                <tr><td>1/2 cup</td><td>Sugar</td></tr>
+                <tr><td>2</td><td>Eggs</td></tr>
+                <tr><td>1 tsp</td><td>Vanilla</td></tr>
+            </table>
+        </div>
+        <div class="lesson-box">
+            <h3>About the Recipe</h3>
+            <p>This lesson teaches students how to make a creamy cheesecake with a crunchy biscuit base and a smooth filling.</p>
+            <p>Cheesecake is an elegant dessert and perfect for special occasions.</p>
+        </div>
+    </div>
+    <div class="tips-box">
+        <h3>Tips</h3>
+        <p>Use room-temperature cream cheese for a smoother filling.</p>
+        <p>Do not overbake the cheesecake.</p>
+    </div>
+</main>
+<footer class="footer">
+    <div class="f-content">
+        <div class="footer-section left"><p class="about-site">If you like us, tell others. If not, tell us.</p><p class="copyright">&copy; 2026 WRL. All rights reserved.</p></div>
+        <div class="footer-section center"><div class="contact-box"><h4>Contact Us</h4><p class="phone-number">+966 50 000 0000</p></div></div>
+        <div class="footer-section right"><div class="social"><a href="https://www.instagram.com/wrl.sweet" target="_blank"><img src="instagram.png" alt="Instagram" class="social-icon"></a><a href="https://twitter.com/WRL_Sweet" target="_blank"><img src="x.png" alt="Twitter" class="social-icon"></a></div></div>
+    </div>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open');});
+if(localStorage.getItem('wrl-theme')==='dark')document.body.classList.add('theme-dark');
+setTimeout(function(){alert("🍰 Cheesecake Lesson Goal:\nIn this lesson, you will learn to make a creamy cheesecake with a crunchy biscuit base.\n\nRemember to take the quiz after finishing! 📝");},3000);
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - WRL SWEET</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="h-content">
+        <div class="brand"><a href="index.html"><img src="logo.PNG" alt="Logo" class="logo-img"></a><h1 class="brand-name">WRL SWEET</h1></div>
+        <button class="hamburger" id="hamburger">&#9776;</button>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a><a href="courses.html">Courses</a><a href="dashboard.html">Dashboard</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a>
+        </nav>
+        <div class="user-profile"><a href="profile.html"><img src="girl.png" alt="Profile" class="profile-img"></a></div>
+    </div>
+</header>
+
+<main>
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Student Dashboard</h1>
+
+        <!-- Quiz Scores Table -->
+        <div class="quiz-results-card">
+            <h2 class="results-subtitle">Best Quiz Scores</h2>
+            <div id="scoresTable"></div>
+            <p id="noScoresMsg" style="color:#888;text-align:center;display:none;">You haven't completed any quizzes yet.</p>
+        </div>
+
+        <!-- Flexbox links row -->
+        <div class="dashboard-links-flex">
+
+            <a href="MyNote.html" class="dashboard-link-card">
+                <img src="Mynote.jpg" alt="My Notes">
+                <span>My Notes</span>
+            </a>
+
+            <a href="TeachersEval.html" class="dashboard-link-card">
+                <img src="chefEval.jpg" alt="Chefs Evaluation">
+                <span>Chefs Evaluation</span>
+            </a>
+
+            <a href="courses.html" class="dashboard-link-card">
+                <img src="cookies.png" alt="Courses">
+                <span>My Courses</span>
+            </a>
+
+            <a href="contact.html" class="dashboard-link-card">
+                <img src="logo.PNG" alt="Contact">
+                <span>Contact Us</span>
+            </a>
+
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="f-content">
+        <div class="footer-section left"><p class="about-site">If you like us, tell others. If not, tell us.</p><p class="copyright">&copy; 2026 WRL. All rights reserved.</p></div>
+        <div class="footer-section center"><div class="contact-box"><h4>Contact Us</h4><p class="phone-number">+966 50 000 0000</p></div></div>
+        <div class="footer-section right"><div class="social"><a href="https://www.instagram.com/wrl.sweet" target="_blank"><img src="instagram.png" alt="Instagram" class="social-icon"></a><a href="https://twitter.com/WRL_Sweet" target="_blank"><img src="x.png" alt="Twitter" class="social-icon"></a></div></div>
+    </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open');});
+if(localStorage.getItem('wrl-theme')==='dark')document.body.classList.add('theme-dark');
+
+// Check localStorage for quiz scores
+const quizKeys = [
+    { label: 'Cookies Quiz', key: 'best_score_cookies' },
+    { label: 'Cheesecake Quiz', key: 'best_score_cheesecake' },
+    { label: 'Macarons Quiz', key: 'best_score_macarons' }
+];
+
+const container = document.getElementById('scoresTable');
+const noMsg = document.getElementById('noScoresMsg');
+let hasScores = false;
+
+// Build table dynamically
+let tableHTML = '<table style="width:100%;border-collapse:collapse;">' +
+    '<thead><tr><th style="text-align:left;padding:8px 12px;border-bottom:2px solid #e0c9b8;">Quiz</th>' +
+    '<th style="text-align:center;padding:8px 12px;border-bottom:2px solid #e0c9b8;">Best Score</th></tr></thead><tbody>';
+
+quizKeys.forEach(function(q) {
+    const val = localStorage.getItem(q.key);
+    if (val !== null) {
+        hasScores = true;
+        tableHTML += '<tr>' +
+            '<td style="padding:10px 12px;">' + q.label + '</td>' +
+            '<td style="text-align:center;padding:10px 12px;font-weight:bold;color:#8b5e52;">' + val + ' / 4</td>' +
+            '</tr>';
+    }
+});
+
+tableHTML += '</tbody></table>';
+
+if (hasScores) {
+    container.innerHTML = tableHTML;
+} else {
+    noMsg.style.display = 'block';
+}
+</script>
+
+</body>
+</html>

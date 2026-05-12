@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - WRL SWEET</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="h-content">
+        <div class="brand"><a href="index.html"><img src="logo.PNG" alt="Logo" class="logo-img"></a><h1 class="brand-name">WRL SWEET</h1></div>
+        <button class="hamburger" id="hamburger">&#9776;</button>
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">Home</a><a href="courses.html">Courses</a><a href="dashboard.html">Dashboard</a><a href="about.html">About Us</a><a href="contact.html">Contact Us</a>
+        </nav>
+        <div class="user-profile"><a href="profile.html"><img src="girl.png" alt="Profile" class="profile-img"></a></div>
+    </div>
+</header>
+
+<main>
+    <div class="main-container">
+        <div class="sidebar">
+            <h1 class="title">About Us</h1>
+            <div class="sort-section">
+                <label for="sort-select">Sort By:</label>
+                <select id="sort-select" class="custom-select">
+                    <option value="random">Default (Random)</option>
+                    <optgroup label="By Name">
+                        <option value="name-az">Name A-Z</option>
+                        <option value="name-za">Name Z-A</option>
+                    </optgroup>
+                    <optgroup label="By Experience">
+                        <option value="exp-low">Experience low-high</option>
+                        <option value="exp-high">Experience high-low</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+        <div class="cards-wrapper" id="chefsContainer">
+            <!-- Dynamically rendered by JS -->
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="f-content">
+        <div class="footer-section left"><p class="about-site">If you like us, tell others. If not, tell us.</p><p class="copyright">&copy; 2026 WRL. All rights reserved.</p></div>
+        <div class="footer-section center"><div class="contact-box"><h4>Contact Us</h4><p class="phone-number">+966 50 000 0000</p></div></div>
+        <div class="footer-section right"><div class="social"><a href="https://www.instagram.com/wrl.sweet" target="_blank"><img src="instagram.png" alt="Instagram" class="social-icon"></a><a href="https://twitter.com/WRL_Sweet" target="_blank"><img src="x.png" alt="Twitter" class="social-icon"></a></div></div>
+    </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open');});
+if(localStorage.getItem('wrl-theme')==='dark')document.body.classList.add('theme-dark');
+
+// Chef data
+const chefs = [
+    { name: 'Wjood',  specialty: 'Pastry',       exp: 11 },
+    { name: 'Lama',   specialty: 'Italian Food',  exp: 9  },
+    { name: 'Rahaf',  specialty: 'Desserts',      exp: 7  },
+    { name: 'Deemah', specialty: 'Desserts',      exp: 5  },
+    { name: 'Rinad',  specialty: 'Desserts',      exp: 2  }
+];
+
+function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function renderChefs(list) {
+    const container = document.getElementById('chefsContainer');
+    container.innerHTML = list.map(c => `
+        <div class="chef-card">
+            <div class="image-box">
+                <img src="girlChef.jpg" alt="Chef ${c.name}">
+            </div>
+            <hr class="divider">
+            <div class="chef-info">
+                <p><strong>Name:</strong> ${c.name}</p>
+                <p><strong>Specialty:</strong> ${c.specialty}</p>
+                <p><strong>Years of Experience:</strong> ${c.exp}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Initial random display
+renderChefs(shuffle(chefs));
+
+document.getElementById('sort-select').addEventListener('change', function() {
+    let sorted;
+    switch (this.value) {
+        case 'name-az':
+            sorted = [...chefs].sort((a,b) => a.name.localeCompare(b.name));
+            break;
+        case 'name-za':
+            sorted = [...chefs].sort((a,b) => b.name.localeCompare(a.name));
+            break;
+        case 'exp-low':
+            sorted = [...chefs].sort((a,b) => a.exp - b.exp);
+            break;
+        case 'exp-high':
+            sorted = [...chefs].sort((a,b) => b.exp - a.exp);
+            break;
+        default:
+            sorted = shuffle(chefs);
+    }
+    renderChefs(sorted);
+});
+</script>
+
+</body>
+</html>
